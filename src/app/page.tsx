@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <div className={styles.page}>
       <h1>Video Player</h1>
-      <VideoPlayer src="/video.mp4" />
+      <VideoPlayer />
     </div>
   );
 }
