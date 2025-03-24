@@ -1,0 +1,29 @@
+.videoContainer {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  background: #000;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: border 0.3s ease;
+}
+
+.dragOver {
+  border: 3px dashed #4caf50;
+}
+
+.video {
+  width: 100%;
+  height: auto;
+  display: block;
+  cursor: pointer;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  justify-content: space-between;
+}
