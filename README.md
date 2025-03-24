@@ -19,7 +19,7 @@ Follow these steps to clone the repository, install dependencies, and run the de
 Clone the project to your local machine using Git:
 
 ```bash
-git clone https://github.com/your-username/video-player-react-app.git
+[git clone https://github.com/your-username/video-player-react-app.git](https://github.com/deanblinder/munch-home-assignment.git)
 ```
 ### 2. Install Dependencies
 Install the required dependencies:
