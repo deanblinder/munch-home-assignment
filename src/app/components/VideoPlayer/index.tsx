@@ -114,7 +114,9 @@ const VideoPlayer: React.FC = () => {
         Your browser does not support the video format.
       </video>
       <div className={styles.controls}>
-        <VolumeControl />
+        <VolumeControl
+          videoRef={videoRef as React.RefObject<HTMLVideoElement>}
+        />
         <PlayButton isPlaying={isPlaying} onToggle={handlePlayPause} />
         <TimeDisplay
           currentTime={videoRef.current?.currentTime || 0}
