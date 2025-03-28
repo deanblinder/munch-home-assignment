@@ -91,7 +91,6 @@ const Timeline: React.FC<TimelineProps> = (props) => {
           style={{ left: `${progressPercentage}%` }}
         />
       </div>
-
       <div
         className={styles.thumbnailStrip}
         ref={thumbnailsRef}

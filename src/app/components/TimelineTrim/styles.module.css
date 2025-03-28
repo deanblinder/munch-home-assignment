@@ -1,0 +1,64 @@
+.trimContainer {
+  position: absolute;
+  bottom: 2;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  pointer-events: none;
+  z-index: 2000;
+}
+
+.trimOverlay {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+}
+
+.trimOverlayLeft {
+  composes: trimOverlay;
+  left: 0;
+}
+
+.trimOverlayRight {
+  composes: trimOverlay;
+  right: 0;
+}
+
+.trimHandle {
+  position: absolute;
+  width: 12px;
+  height: 100%;
+  background-color: rgb(255, 225, 32);
+  cursor: ew-resize;
+  pointer-events: all;
+  transform: translateX(-50%);
+  z-index: 1000;
+  border-radius: 25%;
+}
+
+.trimHandle::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 100%;
+  background-color: rgba(255, 225, 32, 0.3);
+  border-radius: 25%;
+}
+
+.trimArea {
+  position: absolute;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  border: 1px solid rgb(255, 225, 32);
+}
+
+.trimHandle:hover,
+.trimHandle:active {
+  background-color: rgb(255, 225, 32);
+}
