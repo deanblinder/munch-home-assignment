@@ -37,9 +37,7 @@ const VideoPlayer = () => {
         className={styles.video}
         onClick={handlePlayPause}
         src={videoSrc}
-      >
-        Your browser does not support the video format.
-      </video>
+      />
       <div className={styles.controls}>
         <VolumeControl
           videoRef={videoRef as React.RefObject<HTMLVideoElement>}
