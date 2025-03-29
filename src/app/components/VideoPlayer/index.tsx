@@ -5,8 +5,6 @@ import VolumeControl from "../VolumeControl";
 import PlayButton from "../PlayButton";
 import TimeDisplay from "../TimeDisplay";
 import Timeline from "../Timeline";
-import TimelineTrim from "../TimelineTrim";
-
 import { useVideoPlayer } from "./useVideoPlayer";
 
 const VideoPlayer = () => {
@@ -57,15 +55,8 @@ const VideoPlayer = () => {
         duration={videoRef.current?.duration || 0}
         videoRef={videoRef as React.RefObject<HTMLVideoElement>}
         onSeek={handleSeek}
+        onTrimEndChange={onEndChange}
       />
-      {videoRef?.current && videoRef.current.duration && (
-        <TimelineTrim
-          duration={duration}
-          onTrimStartChange={handleSeek}
-          onTrimEndChange={onEndChange}
-          initialEnd={videoRef.current.duration}
-        />
-      )}
     </div>
   );
 };

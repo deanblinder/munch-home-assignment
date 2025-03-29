@@ -4,7 +4,7 @@ import React from "react";
 import styles from "./styles.module.css";
 import { useTimelineTrim } from "./useTimelineTrim";
 
-interface TimelineTrimProps {
+export interface TimelineTrimProps {
   duration: number;
   initialStart?: number;
   initialEnd: number;
@@ -12,13 +12,15 @@ interface TimelineTrimProps {
   onTrimEndChange: (end: number) => void;
 }
 
-const TimelineTrim: React.FC<TimelineTrimProps> = ({
-  duration,
-  initialStart,
-  initialEnd,
-  onTrimStartChange,
-  onTrimEndChange,
-}) => {
+const TimelineTrim = (props: TimelineTrimProps) => {
+  const {
+    duration,
+    initialStart = 0,
+    initialEnd,
+    onTrimStartChange,
+    onTrimEndChange,
+  } = props;
+
   const { trimStart, trimEnd, handleMouseDown } = useTimelineTrim({
     duration,
     initialStart,
@@ -41,7 +43,9 @@ const TimelineTrim: React.FC<TimelineTrimProps> = ({
         className={styles.trimHandle}
         style={{ left: `${(trimStart / duration) * 100}%` }}
         onMouseDown={handleMouseDown("start")}
-      />
+      >
+        <div className={styles.trimLine} />
+      </div>
       <div
         className={styles.trimArea}
         style={{
@@ -53,7 +57,9 @@ const TimelineTrim: React.FC<TimelineTrimProps> = ({
         className={styles.trimHandle}
         style={{ left: `${(trimEnd / duration) * 100}%` }}
         onMouseDown={handleMouseDown("end")}
-      />
+      >
+        <div className={styles.trimLine} />
+      </div>
     </div>
   );
 };

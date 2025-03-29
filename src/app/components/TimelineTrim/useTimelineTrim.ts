@@ -1,21 +1,16 @@
 import { useState, useCallback, useEffect } from "react";
 import styles from "./styles.module.css";
+import { TimelineTrimProps } from ".";
 
-interface UseTimelineTrimProps {
-  duration: number;
-  initialStart?: number;
-  initialEnd?: number;
-  onTrimStartChange: (start: number) => void;
-  onTrimEndChange: (end: number) => void;
-}
+export const useTimelineTrim = (props: TimelineTrimProps) => {
+  const {
+    initialEnd,
+    initialStart = 0,
+    duration,
+    onTrimEndChange,
+    onTrimStartChange,
+  } = props;
 
-export const useTimelineTrim = ({
-  duration,
-  initialStart = 0,
-  initialEnd = duration / 4,
-  onTrimStartChange,
-  onTrimEndChange,
-}: UseTimelineTrimProps) => {
   const [trimStart, setTrimStart] = useState(initialStart);
   const [trimEnd, setTrimEnd] = useState(initialEnd);
   const [isDragging, setIsDragging] = useState<"start" | "end" | null>(null);
@@ -40,7 +35,7 @@ export const useTimelineTrim = ({
       );
       const time = position * duration;
 
-      const minGap = Math.max(1, duration * 0.01); // Minimum 1 second or 1% of duration
+      const minGap = Math.max(1, duration * 0.01);
 
       if (isDragging === "start") {
         const maxStart = trimEnd - minGap;

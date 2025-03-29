@@ -29,6 +29,7 @@ export const useVideoPlayer = () => {
 
   const handleTimeUpdate = () => {
     if (!videoRef.current) return;
+
     setProgress(videoRef.current.currentTime);
 
     if (

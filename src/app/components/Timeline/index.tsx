@@ -1,16 +1,26 @@
 "use client";
 import React, { useEffect, useMemo, useRef } from "react";
 import styles from "./styles.module.css";
+import TimelineTrim from "../TimelineTrim";
 
 interface TimelineProps {
   currentTime: number;
   duration: number;
   onSeek: (time: number) => void;
   videoRef?: React.RefObject<HTMLVideoElement> | null;
+  onTrimEndChange: (end: number) => void;
+  shouldShowTrim?: boolean;
 }
 
-const Timeline: React.FC<TimelineProps> = (props) => {
-  const { currentTime, duration, onSeek, videoRef } = props;
+const Timeline = (props: TimelineProps) => {
+  const {
+    currentTime,
+    duration,
+    onSeek,
+    videoRef,
+    onTrimEndChange,
+    shouldShowTrim = true,
+  } = props;
   const progressPercentage = (currentTime / duration) * 100 || 0;
   const thumbnailsRef = useRef<HTMLDivElement>(null);
 
@@ -96,6 +106,14 @@ const Timeline: React.FC<TimelineProps> = (props) => {
         ref={thumbnailsRef}
         onClick={handleThumbnailClick}
       />
+      {shouldShowTrim && videoRef?.current && videoRef.current.duration && (
+        <TimelineTrim
+          duration={duration}
+          onTrimStartChange={onSeek}
+          onTrimEndChange={onTrimEndChange}
+          initialEnd={videoRef.current.duration}
+        />
+      )}
     </div>
   );
 };
